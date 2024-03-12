@@ -7,6 +7,9 @@ export default {
       return handleOPTIONS();
     }
     const url = new URL(request.url);
+    if (url.pathname.endsWith("/v1/models")) {
+      return new Response('{"object": "list", "data": []}', { status: 200, headers: {'ContentType': 'application/json'}});
+    }
     if (!url.pathname.endsWith("/v1/chat/completions") || request.method !== "POST") {
       return new Response("404 Not Found", { status: 404 });
     }
