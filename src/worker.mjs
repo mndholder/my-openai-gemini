@@ -49,7 +49,8 @@ async function handleRequest(req, apiKey) {
   const MODEL = hasImageMessage(req.messages)
     ? "gemini-pro-vision"
     : "gemini-1.5-pro-latest";
-  const TASK = req.stream ? "streamGenerateContent" : "generateContent";
+  // const TASK = req.stream ? "streamGenerateContent" : "generateContent";
+  const TASK = "generateContent";
   let url = `${BASE_URL}/${API_VERSION}/models/${MODEL}:${TASK}`;
   if (req.stream) { url += "?alt=sse"; }
   let response;
