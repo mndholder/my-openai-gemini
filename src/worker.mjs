@@ -43,12 +43,12 @@ const handleOPTIONS = async () => {
 };
 
 const BASE_URL = "https://generativelanguage.googleapis.com";
-const API_VERSION = "v1beta";
+const API_VERSION = "v1";
 const API_CLIENT = "genai-js/0.2.1"; // https://github.com/google/generative-ai-js/blob/d9c3f4d421100b5656d63e084ca93e418d00bf07/packages/main/src/requests/request.ts#L60
 async function handleRequest(req, apiKey) {
   const MODEL = hasImageMessage(req.messages)
     ? "gemini-pro-vision"
-    : "gemini-1.5-pro-latest";
+    : "gemini-pro";
   const TASK = req.stream ? "streamGenerateContent" : "generateContent";
   let url = `${BASE_URL}/${API_VERSION}/models/${MODEL}:${TASK}`;
   if (req.stream) { url += "?alt=sse"; }
