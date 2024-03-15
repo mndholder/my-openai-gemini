@@ -48,7 +48,7 @@ const API_CLIENT = "genai-js/0.2.1"; // https://github.com/google/generative-ai-
 async function handleRequest(req, apiKey) {
   const MODEL = hasImageMessage(req.messages)
     ? "gemini-pro-vision"
-    : "gemini-pro";
+    : "gemini-1.5-pro-latest";
   const TASK = req.stream ? "streamGenerateContent" : "generateContent";
   let url = `${BASE_URL}/${API_VERSION}/models/${MODEL}:${TASK}`;
   if (req.stream) { url += "?alt=sse"; }
